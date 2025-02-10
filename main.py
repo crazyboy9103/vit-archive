@@ -21,6 +21,7 @@ def main():
     if args.fp16:
         tf.keras.mixed_precision.set_global_policy("mixed_float16")
 
+    # or create dataset from imagefolder
     train_ds, val_ds = create_moka_dataset(
         args.image_path, [args.train_json, args.val_json]
     )
@@ -78,6 +79,8 @@ def main():
         metrics=metrics,
     )
 
+    args.output_dir = os.path.join(args.output_dir, args.model_id)
+    
     train_results = model.fit(
         tf_train_dataset,
         validation_data=tf_val_dataset,
