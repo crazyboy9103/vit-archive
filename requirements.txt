@@ -1,0 +1,6 @@
+tensorflow[and-cuda]
+transformers
+datasets
+pycocotools # for moka format annotation
+tf-keras # keras 3.0 is not supported for transformers, so install legacy version
+numpy<2
